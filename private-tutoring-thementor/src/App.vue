@@ -1,7 +1,11 @@
 <template>
   <Navbar class="navbar" />
   <div class="content">
-    <router-view/>
+    <transition
+    mode="out-in"
+    enter-active-class="animate__animated animate__fadeInUp">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -18,12 +22,12 @@ export default {
 <style>
 .navbar {
   max-width: 90vw;
-  margin: 0 auto;
+  margin: 0vh auto 5vh;
   padding: 0;
 }
 .content {
   margin: 0 auto;
-  max-width: 75vw;
+  width: 100%;
   padding: 0;
 }
 </style>

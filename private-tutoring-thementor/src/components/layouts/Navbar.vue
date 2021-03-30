@@ -2,25 +2,26 @@
   <div class="main-header">
    <div class="nav">
     <nav>
-     <main-button mode="btn blue">Courses ✍</main-button>
-     <main-button mode="btn blue">Tutors 🧔</main-button>
-     <main-button mode="btn blue">Be a Tutor 📝</main-button>
+     <main-button link to="/courses" mode="btn black">Courses ✍</main-button>
+     <main-button link to="/tutors" mode="btn black">Tutors 🧔</main-button>
+     <main-button link to="/register" mode="btn black">Be a Tutor 📝</main-button>
     </nav>
    </div>
    <div class="logo animate__animated animate__swing animate__delay-3s">
-    <img src="../../assets/logo/TheMentor-logo-svg-nobackground.svg">
+    <router-link to="/">
+      <img src="../../assets/logo/TheMentor-logo-svg-nobackground.svg">
+    </router-link>
    </div>
    <div class="social-icons">
-     <main-button mode="btn blue">🤨</main-button>
-     <main-button mode="btn blue">😋</main-button>
-     <main-button mode="btn blue">🤔</main-button>
+     <main-button mode="btn black">🤨</main-button>
+     <main-button mode="btn black">😋</main-button>
+     <main-button mode="btn black">🤔</main-button>
    </div>
   </div>
 </template>
 
 <script>
 export default {
-
 }
 </script>
 
@@ -33,7 +34,7 @@ export default {
  border-bottom: 2.5px solid var(--black);
  padding: 1em 0;
 }
-.btn:nth-last-child(3), .btn:nth-last-child(2) {
+.btn:nth-last-child(3), .btn:nth-last-child(2), .router:nth-last-child(3), .router:nth-last-child(2) {
  margin-right: 0.5em;
 }
 .logo img {

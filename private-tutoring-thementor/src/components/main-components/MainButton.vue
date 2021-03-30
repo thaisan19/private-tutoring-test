@@ -2,8 +2,10 @@
   <button v-if="!link" :class="mode">
    <slot></slot>
   </button>
-  <router-link v-else :to="to" :class="mode">
-   <slot></slot>
+  <router-link v-else :to="to" class="router">
+   <button :class="mode">
+    <slot></slot>
+   </button>
   </router-link>
 </template>
 
@@ -34,7 +36,7 @@ export default {
  padding: 1vh 1vw;
  font-size: 1em;
  background: none;
- border: 1.5px solid var(--black);
+ border: 2px solid var(--black);
  cursor: pointer;
  transition: 0.5s;
  position: relative;
@@ -51,19 +53,31 @@ export default {
  z-index: -1;
  transition: 0.5s;
 }
-.blue {
- color: var(--black);
+.btn:disabled {
+ opacity: 0.5;
+ color: var(--white);
+ background: var(--black);
+ cursor: not-allowed;
 }
-.blue:hover {
+.btn:focus {
+ outline: none;
+ background: var(--black);
+ color: var(--white);
+}
+.black {
+ color: var(--black);
+ background: #fff;
+}
+.black:hover {
  color:var(--white);
  z-index: 1000;
 ;
 }
-.blue::before {
+.black::before {
  bottom: 0;
  border-radius: 50% 50% 0 0;
 }
-.blue:hover::before {
+.black:hover::before {
  height: 180%;
 }
 </style>
