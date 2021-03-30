@@ -7,14 +7,17 @@
       <router-view />
     </transition>
   </div>
+  <Footer class="footer" />
 </template>
 
 <script>
 import Navbar from './components/layouts/Navbar.vue'
+import Footer from './components/layouts/Footer.vue'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    Footer
   }
 }
 </script>
@@ -29,5 +32,10 @@ export default {
   margin: 0 auto;
   width: 100%;
   padding: 0;
+}
+.footer {
+  max-width: 100%;
+  padding: 0;
+  margin-top: 5em;
 }
 </style>

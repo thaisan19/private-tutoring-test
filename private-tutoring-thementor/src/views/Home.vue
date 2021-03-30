@@ -119,19 +119,168 @@
     </div>
   </section>
   <section class="section-five">
-    <h1>Five</h1>
+    <div class="first-video">
+      <div class="student-video">
+        <iframe
+        src="https://youtube.com/embed/Np-_FD-5yTY?autoplay=1&mute=1">
+        </iframe>
+      </div>
+      <div class="student-video-title">
+        <h2>Student's Tips</h2>
+        <p>The video at your left handside will definitely shows you, students, of how to enjoy our platform.</p>
+        <h1>👈</h1>
+      </div>
+    </div>
+    <div class="second-video">
+      <div class="tutor-video-title">
+        <h2>Tutor's Tips</h2>
+        <p>Hello There Tutor 👋 Hardly to findd out how to register with our platform? You will need the video on your right handside. Enjoy Tutor.</p>
+        <h1>👉</h1>
+      </div>
+      <div class="tutor-video">
+        <iframe
+        src="https://youtube.com/embed/Np-_FD-5yTY?autoplay=1&mute=1">
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <section class="section-six">
+    <div class="our-team">
+      <h1>🤹‍♂️ Meet The Team</h1>
+      <Carousel :items-to-show="2.5" class="carousel">
+        <Slide v-for="member in members" :key="member.id">
+          <div class="carousel__item">
+            {{ member.name }}<br>
+            {{ member.role }}<br>
+            {{ member.description }}
+          </div>
+        </Slide>
+
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
+    </div>
   </section>
 </template>
 
 <script>
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
+
+import 'vue3-carousel/dist/carousel.css';
+
 export default {
   name: 'Home',
+  data() {
+    return {
+      members: [
+        {
+          id: '01',
+          name: 'Meas Soknoy',
+          role: 'President',
+          description: "I'm a 3rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+        },
+        {
+          id: '02',
+          name: 'Y Sreylin',
+          role: 'Vice-President',
+          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+        },
+        {
+          id: '03',
+          name: 'Chhour Thaisan',
+          role: 'Developer',
+          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+        },
+        {
+          id: '04',
+          name: 'Long Hakly',
+          role: 'Content Creator',
+          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+        },
+        {
+          id: '04',
+          name: 'Chhiv Bunchhean',
+          role: 'Content Writer',
+          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+        },
+      ]
+    }
+  },
   components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
   }
 }
 </script>
 
 <style>
+/* caroudsel style */
+.carousel {
+  z-index: 1;
+}
+.carousel__item {
+  min-height: 10em;
+  width: 100%;
+  color:  var(--black);
+  background: #fff;
+  font-size: 20px;
+  border: 4px solid var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.carousel__item::after {
+  content: "";
+  background: url('../assets/background-pattern-vertical.png');
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 0;
+}
+.carousel__item:hover {
+  transform: scale(1) rotateZ(-3deg);
+}
+.carousel__slide {
+  padding: 1em;
+}
+.carousel__pagination-button {
+  background: #fff;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 1.7em;
+  height: .5em;
+  transform: skewX(-40deg);
+}
+.carousel__pagination-button:focus {
+  outline: none;
+}
+.carousel__pagination-button--active {
+  background: var(--yellow);
+}
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+  background: var(--blue);
+  z-index: 1;
+}
+.carousel__prev:focus,
+.carousel__next:focus {
+  outline: none;
+}
+
+/* register marquee animation */
 .register-marquee {
   height: 20vh;
   overflow: hidden;
@@ -450,6 +599,7 @@ div .dot {
   margin-right: .2em;
   cursor: pointer;
   z-index: 1;
+  text-shadow: 10px 10px 0px rgba(0,0,0,0.1);
 }
 .second-body-title h1:hover {
   transform: scale(1.1) rotateZ(-2deg);
@@ -466,6 +616,7 @@ div .dot {
   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   z-index: 1;
+  text-shadow: 10px 10px 0px rgba(0,0,0,0.1);
 }
 .second-body-title {
   display: flex;
@@ -482,6 +633,12 @@ div .dot {
 }
 .step {
   z-index: 1;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border-bottom: 3px dashed rgba(0,0,0,0.1);
+}
+.step:hover {
+ border-bottom: 5px solid #fff;
 }
 .step h2 {
   font-size: 1.5em;
@@ -524,9 +681,120 @@ div .dot {
   width: 1em;
 }
 .section-five {
-  width: 70%;
-  height: 100vh;
+  width: 90%;
+  height: auto;
   margin: 0 auto;
   padding: 10em 0;
+  margin-bottom: 5em;
+}
+.first-video,
+.second-video {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10em;
+  height: auto;
+  width: 100%;
+}
+.student-video iframe,
+.tutor-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 2em;
+  border: 5px solid var(--black);
+  background: url('../assets/test-background-03.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+.student-video iframe:hover {
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+  transform: scale(1.05) rotateZ(-1deg);
+}
+.tutor-video iframe:hover {
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+  transform: scale(1.05) rotateZ(1deg);
+}
+.student-video-title h2,
+.tutor-video-title h2 {
+  font-size: 4em;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+.student-video-title h2:hover,
+.tutor-video-title h2:hover {
+  color: var(--blue);
+  letter-spacing: .07em;
+  text-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+}
+.student-video-title p,
+.tutor-video-title p {
+  padding: 1em 0;
+  padding-right: 4em;
+  line-height: 1.5em;
+  font-size: 1.5em;
+}
+.student-video-title h1,
+.tutor-video-title h1 {
+  font-size: 5em;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+.student-video-title h1:hover,
+.tutor-video-title h1:hover {
+  transform: scale(1.3) rotateZ(-2deg);
+  text-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+}
+.second-video {
+  margin-top: 10em;
+}
+.tutor-video-title {
+  text-align: right;
+}
+.tutor-video-title p {
+  padding-right: 0em;
+  padding-left: 4em;
+}
+.tutor-video iframe{
+  float: right;
+}
+.section-six {
+  width: 100%;
+  height: auto;
+  padding: 7em 0;
+  background: var(--blue);
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+.section-six::after {
+  content: "";
+  background-image: url('../assets/background-pattern-vertical.png');
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 0;
+}
+.our-team {
+  width: 80%;
+  margin: 0 auto;
+  z-index: 1;
+  height: auto;
+}
+.our-team h1 {
+  font-size: 4rem;
+  color: #fff;
+  padding-bottom: .5em;
+  text-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+.our-team h1:hover {
+  letter-spacing: .7em;
 }
 </style>
