@@ -239,7 +239,7 @@ export default {
 }
 .carousel__item::after {
   content: "";
-  background: url('../assets/background-pattern-vertical.png');
+  background: url('../assets/background-pattern-bottom-right-to-top-left.png');
   top: 0;
   left: 0;
   bottom: 0;
