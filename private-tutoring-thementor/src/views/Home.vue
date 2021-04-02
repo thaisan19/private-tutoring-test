@@ -122,7 +122,7 @@
     <div class="first-video">
       <div class="student-video">
         <iframe
-        src="https://youtube.com/embed/Np-_FD-5yTY?autoplay=1&mute=1">
+        src="https://youtube.com/embed/Np-_FD-5yTY">
         </iframe>
       </div>
       <div class="student-video-title">
@@ -139,7 +139,7 @@
       </div>
       <div class="tutor-video">
         <iframe
-        src="https://youtube.com/embed/Np-_FD-5yTY?autoplay=1&mute=1">
+        src="https://youtube.com/embed/Np-_FD-5yTY">
         </iframe>
       </div>
     </div>
@@ -148,11 +148,16 @@
     <div class="our-team">
       <h1>🤹‍♂️ Meet The Team</h1>
       <Carousel :items-to-show="2.5" class="carousel">
-        <Slide v-for="member in members" :key="member.id">
+        <Slide v-for="member in members" :key="member.name">
           <div class="carousel__item">
-            {{ member.name }}<br>
-            {{ member.role }}<br>
-            {{ member.description }}
+            <div class="carousel-item-left">
+              <img :src="member.img">
+            </div>
+            <div class="carousel-item-right">
+              <h2>{{ member.name }}</h2>
+              <h4>{{ member.role }}</h4>
+              <p>{{ member.description }}</p>
+            </div>
           </div>
         </Slide>
 
@@ -176,34 +181,52 @@ export default {
     return {
       members: [
         {
-          id: '01',
+          img: require('../assets/member-profile/meas_soknoy.jpg'),
           name: 'Meas Soknoy',
           role: 'President',
           description: "I'm a 3rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
         },
         {
-          id: '02',
+          img: require('../assets/member-profile/y_sreylin.jpg'),
           name: 'Y Sreylin',
           role: 'Vice-President',
-          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+          description: "Never expect enspiration from other. Your will get it without condition from the heart of your parent."
         },
         {
-          id: '03',
+          img: require('../assets/member-profile/thai_san.jpg'),
           name: 'Chhour Thaisan',
+          role: 'Developer, Designer',
+          description: "It's just life. It will be over before we knew it. The soul know no time, life is too short to waste a second 🤗👋"
+        },
+        {
+          img: require('../assets/member-profile/ly_panha.jpg'),
+          name: 'Ly Panha',
           role: 'Developer',
-          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+          description: "Hope tomorrow is better than today."
         },
         {
-          id: '04',
-          name: 'Long Hakly',
-          role: 'Content Creator',
-          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
-        },
-        {
-          id: '04',
+          img: require('../assets/member-profile/bun_chhean.jpg'),
           name: 'Chhiv Bunchhean',
           role: 'Content Writer',
-          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there, nice to meet you 🤗👋"
+          description: "Life is born to solve the problem, but problem exist every minute."
+        },
+        {
+          img: require('../assets/member-profile/veasna_pich.jpg'),
+          name: 'Pich Veasna',
+          role: 'Content Creator',
+          description: "I'm a 2rd year student at Kirirom Institute of Technolog. Hey there,  🤗👋"
+        },
+        {
+          img: require('../assets/member-profile/long_hakley.jpg'),
+          name: 'Long Hakly',
+          role: 'CMO',
+          description: "Nothing is impossible, except you do nothing."
+        },
+        {
+          img: require('../assets/member-profile/pich_rechana.jpg'),
+          name: 'Pich Rachana',
+          role: 'Marketing',
+          description: "Fake it till you make it."
         },
       ]
     }
@@ -232,10 +255,29 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em;
   box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
   cursor: pointer;
   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  height: auto;
+  overflow: hidden;
+}
+.carousel-item-left {
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+.carousel-item-right p {
+  padding: 1em;
+}
+.carousel-item-left img {
+  height: auto;
+  width: 80%;
+  transform: scale(1.3);
+}
+.carousel-item-right {
+  padding: 1em 0;
 }
 .carousel__item::after {
   content: "";
@@ -248,6 +290,7 @@ export default {
   background-size: cover;
   position: absolute;
   z-index: 0;
+  overflow: hidden;
 }
 .carousel__item:hover {
   transform: scale(1) rotateZ(-3deg);
@@ -289,7 +332,9 @@ export default {
   padding-top: 3em;
   border-bottom: 5px solid var(--black);
   border-top: 5px solid var(--black);
-  background: #fff;
+  background: url('../assets/background-pattern-vertical.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   cursor: pointer;
 }        
 .register-marquee p {
@@ -485,6 +530,11 @@ div .dot {
 .global-search {
   text-align: center;
 }
+/* .section-two {
+  background: url('../assets/background-pattern-bottom-right-to-top-left.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
 .first-body {
   width: 70%;
   height: 80%;
@@ -506,26 +556,6 @@ div .dot {
   color: var(--blue);
   margin-left: .4em;
 }
-/* .first-body-left h1:after {
-	content: '';
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 20%;
-  border-bottom: 10px solid;
-  margin-top: 10px;
-  opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(0,1);
-	transform: scale(0,1);
-} */
-
-/* .first-body-left h1:hover:after {
-  opacity: 1;
-	-webkit-transform: scale(1);
-	transform: scale(1);
-} */
 
 .first-body-left h2 {
   font-size: 4em;
@@ -635,10 +665,6 @@ div .dot {
   z-index: 1;
   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
-  border-bottom: 3px dashed rgba(0,0,0,0.1);
-}
-.step:hover {
- border-bottom: 5px solid #fff;
 }
 .step h2 {
   font-size: 1.5em;

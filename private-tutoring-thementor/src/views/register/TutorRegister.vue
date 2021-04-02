@@ -289,6 +289,19 @@ export default {
   width: 60%;
   box-shadow: 10px 10px 0px rgba(0,0,0,0.08);
 }
+.form::after {
+  content: "";
+  background: url('../../assets/background-pattern-bottom-right-to-top-left.png');
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+}
 .roadmap {
  display: grid;
  grid-template-columns: repeat(4, 1fr);
@@ -305,7 +318,10 @@ export default {
  padding: 2em;
  border: 2.5px solid var(--black);
  cursor: pointer;
- background: var(--white);
+ background: url('../../assets/background-pattern-vertical.png');
+ background-size: cover;
+ background-repeat: no-repeat;
+ overflow: hidden;
  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .register-step:hover {
