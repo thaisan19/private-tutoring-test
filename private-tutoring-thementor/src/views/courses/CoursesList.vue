@@ -1,20 +1,30 @@
 <template>
   <div class="courses-list">
-    <h1>Courses List</h1>
+    <Suspense>
+      <template #default>
+        <CoursesListComp />
+      </template>
+      <template #fallback>
+        <h1>Loading Tutors Data...🙌🙏🤗</h1>
+      </template>
+    </Suspense>
   </div>
 </template>
 
 <script>
-export default {
+import CoursesListComp from '@/components/course/CoursesListComp.vue'
 
+export default {
+  components: {
+    CoursesListComp
+  }
 }
 </script>
 
 <style scoped>
 .courses-list {
-  width: 70%;
+  width: 80%;
   height: auto;
   margin: 0 auto;
-  padding: 2em 0;
 }
 </style>

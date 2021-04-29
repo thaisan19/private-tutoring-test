@@ -268,6 +268,7 @@ export default {
 .roadmap-section {
   width: 75vw;
   margin: 0 auto;
+  margin-top: 2em;
 }
 .register-form-section {
  width: 100%;
