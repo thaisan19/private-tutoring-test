@@ -9,7 +9,7 @@ export default {
  },
  actions: {
   getCourses(context)  {
-   axios.get('http://localhost:5000/api/course/published')
+   axios.get('https://backend-pvt.herokuapp.com/api/course/published')
    .then(res => {
     context.commit('SET_COURSES', res.data)
    })
