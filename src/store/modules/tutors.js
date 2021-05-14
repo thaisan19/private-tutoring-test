@@ -12,7 +12,7 @@ export default {
  },
  actions: {
   async getTutors(context) {
-   await axios.get('http://localhost:5000/api/admin/published')
+   await axios.get('https://backend-pvt.herokuapp.com/api/admin/published')
    .then(res => {
     context.commit('SET_TUTORS', res.data)
    })
